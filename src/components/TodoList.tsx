@@ -1,49 +1,38 @@
-"use client";
-
-import { generateRandomId } from "@/lib/helper";
 import { TodoItem } from "@/lib/types";
-import { Plus } from "lucide-react";
-import React, { useState } from "react";
+import { Pen, Trash } from "lucide-react";
+import React from "react";
 
-function TodoList() {
-  const [userInput, setUserInput] = useState("");
-  const [list, setList] = useState<TodoItem[]>([]);
-  const handleAddTodo = () => {
-    if (userInput !== "") {
-      const newTodo: TodoItem = {
-        id: generateRandomId(),
-        title: userInput,
-        is_completed: false,
-      };
-      setList([...list, newTodo]);
-      setUserInput("");
-      console.log(list);
-    }
-  };
+function TodoList({ items }: { items: TodoItem[] }) {
   return (
     <div>
-      <div className="card w-100 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Add Tasks!</h2>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="Type here"
-              className="input input-bordered input-primary w-full max-w-xs"
-              onChange={(e) => {
-                setUserInput(e.target.value);
-              }}
-              value={userInput}
-            />
-            <button
-              className="btn btn-square btn-outline"
-              onClick={handleAddTodo}
-            >
-              <Plus />
-            </button>
-          </div>
+      {items.length !== 0 ? (
+        <div className="flex flex-col gap-1">
+          {items.map((item, index) => {
+            return (
+              <div
+                key={index}
+                className="flex flex-col lg:flex-row flex-wrap items-center gap-3 lg:justify-between justify-center w-full py-3"
+              >
+                <div className="card bg-neutral shadow-xl flex-1 lg:w-[80%] w-full">
+                  <div className="card-body py-4 break-words">
+                    <p>{item.title}</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <button className="btn btn-square btn-outline basis-*">
+                    <Pen />
+                  </button>
+                  <button className="btn btn-square btn-outline basis-*">
+                    <Trash />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
-      </div>
+      ) : (
+        <>No items</>
+      )}
     </div>
   );
 }

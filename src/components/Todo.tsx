@@ -3,7 +3,7 @@
 import { generateRandomId } from "@/lib/helper";
 import { TodoItem } from "@/lib/types";
 import { Plus } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, SetStateAction } from "react";
 import TodoList from "./TodoList";
 
 function Todo() {
@@ -42,7 +42,7 @@ function Todo() {
               <Plus />
             </button>
           </div>
-          <TodoList items={list} />
+          <TodoList items={list} setItems={setList} />
         </div>
       </div>
     </div>

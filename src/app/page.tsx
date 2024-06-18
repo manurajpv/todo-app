@@ -1,8 +1,11 @@
 import Todo from "@/components/Todo";
 import { CircleUser, ListTodo, LogOut } from "lucide-react";
 import { redirect } from "next/navigation";
+import AuthenticateUser from "./auth";
 
 export default function Home() {
+  const user = AuthenticateUser()
+  console.log("user", user)
   return (
     <div className="min-h-screen">
       <nav className="flex justify-between items-center p-4 h-20">

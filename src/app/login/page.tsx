@@ -1,4 +1,4 @@
-import LoginSignupForm from "@/components/LoginSignupForm";
+import LoginForm from "@/components/LoginForm";
 import ShineBorder from "@/components/ui/shineBorder";
 
 export default function Login() {
@@ -14,7 +14,7 @@ export default function Login() {
           </ShineBorder>
         </div>
         <div className="flex items-center h-screen">
-          <LoginSignupForm />
+          <LoginForm />
         </div>
       </div>
     </main>

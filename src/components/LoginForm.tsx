@@ -22,7 +22,6 @@ export default function LoginForm() {
             <button
               formAction={(formData) => {
                 handleEmailLogin(formData).then((res) => {
-                  console.log(res)
                   if (res.success) {
                     toast.success(res.message)
                   } else {

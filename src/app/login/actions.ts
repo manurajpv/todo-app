@@ -46,3 +46,13 @@ export const handleEmailLogin = async (formData: FormData) => {
     return { "success": false, "message": "Please try again later" }
   }
 }
+
+export const handleGoogleSignin = async ()=>{
+  const supabase = createClient();
+  await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options:{
+      redirectTo:"http://localhost:3000/auth/callback"
+    }
+  })
+}

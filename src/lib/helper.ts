@@ -2,7 +2,7 @@
 import { MailObj } from "./types";
 const nodemailer = require("nodemailer");
 
-export const generateRandomId = () => {
+export const generateRandomId = async () => {
   const minCeiled = Math.ceil(1000);
   const maxFloored = Math.floor(9999);
   return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
